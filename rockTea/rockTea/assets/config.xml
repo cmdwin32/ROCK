@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FREASH_TEA name="绿茶" english_name="GREE TEA" cost="$3.58" image="" />
+<FREASH_TEA name="红茶" english_name="BLACK TEA" cost="$3.58"  image="" />
+<MILK_TEA name="咖啡，奶茶" english_name="MILK TEA" cost="$3.85" image="" />
+<TEA_LATTE name="伴伴奶茶" english_name="COFFIE,MILK TEA" cost="$4.35" image="" />
+<ICED_MILK_WITH_TEA name="绿茶伴奶" english_name="ICED MILK WITH GREEN TEA" cost="$4.35" image="" />
+<FLAVORED_DRINK name="梅子蜜" english_name="HONEYPLUM" cost="$3.85" image="" />
+<VOGURT_DRINK name="金橘多多" english_name="KUMQUAT YOGURT" cost="$3.85" image="" />
+<VOGURT_DRINK name="百香橘多多" english_name="PASSION FRUIT YOGURT" cost="$3.85" image="" />

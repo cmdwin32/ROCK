@@ -8,6 +8,8 @@ import org.frozend.teaMarket.ShakeListener.OnShakeListener;
 
 import android.R.string;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ApplicationErrorReport.AnrInfo;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,15 +19,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.lehoon.test.R;
+import org.frozend.rocktee.R;
 
 public class TestYaoActivity extends Activity implements OnClickListener
 {
+	
+	private static String[] types = {"typeOne", "typeTwo", "typeThree"};
+	private static String[] values = {"beijing", "shanghai", "shenzhen"};
+
 	/** Called when the activity is first created. */
 	ListView mListview;
 	ShakeListener mShakeListener;
@@ -39,20 +48,17 @@ public class TestYaoActivity extends Activity implements OnClickListener
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+		int screenWidth  = getWindowManager().getDefaultDisplay().getWidth();       // 屏幕宽（像素，如：480px）  
+		int screenHeight = getWindowManager().getDefaultDisplay().getHeight();      // 屏幕高（像素，如：800p）
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-//		myAnimation_Translate = AnimationUtils.loadAnimation(this,
-//				R.anim.my_translate_action);
-//		myAnimation_Translate.setFillAfter(true);
-//		textView = (TextView) findViewById(R.id.print);
-//		img = (ImageView) findViewById(R.id.head_detail);
-//		mSoundManager = new SoundManager();
-//		mSoundManager.initSounds(getBaseContext());
-//		mSoundManager.addSound(1, R.raw.ming);
-//		img.setOnClickListener(this);
+		ImageView img = (ImageView) this.findViewById(R.id.imageView1);
+		img.setScaleX(screenWidth/480);
+		img.setScaleY(screenHeight/640);
 		mShakeListener = new ShakeListener(this);
 		mShakeListener.setOnShakeListener(new Shake());
 		time = System.currentTimeMillis();
+		initSp();
 	}
 
 	class Shake implements OnShakeListener
@@ -73,6 +79,25 @@ public class TestYaoActivity extends Activity implements OnClickListener
 		}
 		
 
+	}
+	public void initSp(){
+		Spinner sp = (Spinner)findViewById(R.id.spinner1);
+		ArrayAdapter<String> type = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, types);
+		type.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		sp.setAdapter(type);
+		sp.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
+			   public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3)
+			   {
+				   Log.e("tee", types[arg2]+" 对应的值是："+values[arg2]);
+				   arg0.setVisibility(View.VISIBLE);
+			   }
+			   public void onNothingSelected(AdapterView<?> arg0)
+			   {
+			    //m_TextView.setText("请选择一项...");
+				   Spinner sp = (Spinner)findViewById(R.id.spinner1);
+				   sp.setSelection(0);
+			   }
+		});
 	}
 
 	@Override

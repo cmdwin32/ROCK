@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.lehoon.test;
+package org.frozend.rocktee;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

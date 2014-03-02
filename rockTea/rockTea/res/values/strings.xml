@@ -3,5 +3,6 @@
 
     <string name="hello">Hi!</string>
     <string name="app_name">RockTea</string>
+    <string name="taste">Taste</string>
 
 </resources>
